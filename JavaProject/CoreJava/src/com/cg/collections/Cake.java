@@ -1,5 +1,5 @@
 package com.cg.collections;
-public class Cake {
+public class Cake implements Comparable<Cake>{
     private String cakeName;
     private float price;
     //setter and getter
@@ -7,6 +7,12 @@ public class Cake {
     public Cake(String cakeName, float price) {
         this.cakeName = cakeName;
         this.price = price;
+    }
+    @Override
+    public int compareTo(Cake c) {
+       if(this.price<c.price)
+        return 1;
+        return -1;
     }
     
     public String getCakeName() {
@@ -21,5 +27,6 @@ public class Cake {
     public void setPrice(float price) {
         this.price = price;
     }
-    
+
+ 
 }
