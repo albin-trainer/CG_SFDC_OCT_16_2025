@@ -11,8 +11,8 @@ public class Cake implements Comparable<Cake>{
     @Override
     public int compareTo(Cake c) {
        if(this.price<c.price)
-        return 1;
         return -1;
+        return 1;
     }
     
     public String getCakeName() {

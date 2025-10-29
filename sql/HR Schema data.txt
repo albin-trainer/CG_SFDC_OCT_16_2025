@@ -1,0 +1,126 @@
+CREATE DATABASE hr;
+USE hr;
+
+
+
+CREATE TABLE countries (
+  country_id CHAR(2) PRIMARY KEY,
+  country_name VARCHAR(40),
+  region_id INT
+);
+
+CREATE TABLE locations (
+  location_id INT AUTO_INCREMENT PRIMARY KEY,
+  street_address VARCHAR(40),
+  postal_code VARCHAR(12),
+  city VARCHAR(30) NOT NULL,
+  state_province VARCHAR(25),
+  country_id CHAR(2),
+  FOREIGN KEY (country_id) REFERENCES countries(country_id)
+);
+
+
+CREATE TABLE departments (
+  department_id INT AUTO_INCREMENT PRIMARY KEY,
+  department_name VARCHAR(30) NOT NULL,
+  manager_id INT,
+  location_id INT,
+  FOREIGN KEY (location_id) REFERENCES locations(location_id)
+);
+
+CREATE TABLE jobs (
+  job_id VARCHAR(10) PRIMARY KEY,
+  job_title VARCHAR(35) NOT NULL,
+  min_salary DECIMAL(8,2),
+  max_salary DECIMAL(8,2)
+);
+
+CREATE TABLE employees (
+  employee_id INT AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(20),
+  last_name VARCHAR(25) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  phone_number VARCHAR(20),
+  hire_date DATE NOT NULL,
+  job_id VARCHAR(10) NOT NULL,
+  salary DECIMAL(8,2),
+  commission_pct DECIMAL(2,2),
+  manager_id INT,
+  department_id INT,
+  FOREIGN KEY (job_id) REFERENCES jobs(job_id),
+  FOREIGN KEY (manager_id) REFERENCES employees(employee_id),
+  FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+
+
+CREATE TABLE job_history (
+  employee_id INT NOT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE NOT NULL,
+  job_id VARCHAR(10) NOT NULL,
+  department_id INT,
+  PRIMARY KEY (employee_id, start_date),
+  FOREIGN KEY (employee_id) REFERENCES employees(employee_id),
+  FOREIGN KEY (job_id) REFERENCES jobs(job_id),
+  FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+-----
+INSERT INTO regions VALUES
+(1, 'Europe'),
+(2, 'Americas'),
+(3, 'Asia'),
+(4, 'Middle East and Africa');
+
+
+INSERT INTO countries VALUES
+('IT', 'Italy', 1),
+('JP', 'Japan', 3),
+('US', 'United States', 2),
+('CA', 'Canada', 2),
+('CN', 'China', 3),
+('IN', 'India', 3);
+
+
+INSERT INTO locations (street_address, postal_code, city, state_province, country_id) VALUES
+('2014 16th Ave', '98122', 'Seattle', 'Washington', 'US'),
+('25 MG Road', '560001', 'Bangalore', 'Karnataka', 'IN'),
+('100 Main Street', '90001', 'Los Angeles', 'California', 'US'),
+('1-2-3 Roppongi', '106-0032', 'Tokyo', NULL, 'JP'),
+('Via di Roma 101', '47800', 'Rome', NULL, 'IT');
+
+
+INSERT INTO departments (department_name, location_id) VALUES
+('Administration', 1),
+('IT', 2),
+('Finance', 3),
+('Human Resources', 4),
+('Marketing', 5);
+
+
+INSERT INTO jobs VALUES
+('AD_PRES', 'President', 20000, 40000),
+('AD_VP', 'Administration Vice President', 15000, 30000),
+('IT_PROG', 'Programmer', 4000, 10000),
+('FI_MGR', 'Finance Manager', 8200, 16000),
+('HR_REP', 'HR Representative', 3000, 8000),
+('MK_MAN', 'Marketing Manager', 9000, 15000),
+('MK_REP', 'Marketing Representative', 4000, 9000);
+
+
+INSERT INTO employees (first_name, last_name, email, phone_number, hire_date, job_id, salary, commission_pct, manager_id, department_id) VALUES
+('Steven', 'King', 'SKING@example.com', '515.123.4567', '2003-06-17', 'AD_PRES', 24000, NULL, NULL, 1),
+('Neena', 'Kochhar', 'NKOCHHAR@example.com', '515.123.4568', '2005-09-21', 'AD_VP', 17000, NULL, 1, 1),
+('Lex', 'De Haan', 'LDEHAAN@example.com', '515.123.4569', '2001-01-13', 'AD_VP', 17000, NULL, 1, 3),
+('Alexander', 'Hunold', 'AHUNOLD@example.com', '590.423.4567', '2006-01-03', 'IT_PROG', 9000, NULL, 3, 2),
+('Bruce', 'Ernst', 'BERNST@example.com', '590.423.4568', '2007-05-21', 'IT_PROG', 6000, NULL, 4, 2),
+('David', 'Austin', 'DAUSTIN@example.com', '590.423.4569', '2005-06-25', 'IT_PROG', 4800, NULL, 4, 2),
+('Valli', 'Pataballa', 'VPATABAL@example.com', '590.423.4560', '2006-02-05', 'IT_PROG', 4800, NULL, 4, 2),
+('Diana', 'Lorentz', 'DLORENTZ@example.com', '590.423.5567', '2007-02-07', 'HR_REP', 4200, NULL, 2, 4),
+('Nancy', 'Greenberg', 'NGREENBE@example.com', '515.124.4569', '2002-08-17', 'FI_MGR', 12000, NULL, 3, 3),
+('Daniel', 'Faviet', 'DFAVIET@example.com', '515.124.4169', '2002-08-16', 'MK_MAN', 9000, 0.15, 9, 5);
+
+
+INSERT INTO job_history VALUES
+(4, '2006-01-03', '2007-12-31', 'IT_PROG', 2),
+(5, '2007-05-21', '2008-10-27', 'IT_PROG', 2),
+(8, '2007-02-07', '2008-08-19', 'HR_REP', 4);

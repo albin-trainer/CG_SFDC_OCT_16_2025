@@ -1,0 +1,31 @@
+HR Schema – Basic SQL Exercises
+
+Display all employee details.
+
+List only employee names and job IDs.
+
+Show unique job IDs available in the company.
+
+Find employees earning a salary greater than 8000.
+
+List employees hired after 1st January 2005.
+
+Display employees in the IT department.
+
+Show employees and their managers.
+
+Find employees who work in the “Bangalore” location.
+
+Find average salary of each department.
+
+Show top 3 highest-paid employees.
+
+Find employees who earn the same salary as their manager.
+
+Find employees without a manager (top-level managers).
+
+Find departments with no employees.
+
+Show job titles and number of employees in each job.
+
+Find employees whose salary is greater than the average salary.

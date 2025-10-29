@@ -2,6 +2,7 @@ package com.cg.collections;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class SortDemo {
     public static void main(String[] args) {
@@ -23,9 +24,24 @@ public class SortDemo {
         cakeList.add(new Cake("Blue Berry", 600));
         cakeList.add(new Cake("Rasp Berry", 700));
         Collections.sort(cakeList);
-        System.out.println("--------------");
+        System.out.println("----price L to H----------");
+        for(Cake c:cakeList){
+            System.out.println(c.getCakeName()+"  "+c.getPrice());
+        }
+        System.out.println("--------price H to L---------");
+        Collections.sort(cakeList, new SortByPriceHighToLow());
         for(Cake c:cakeList){
             System.out.println(c.getCakeName()+"  "+c.getPrice());
         }
     }
+}
+class SortByPriceHighToLow implements Comparator<Cake>{
+    @Override
+    public int compare(Cake c1, Cake c2) {
+      if(c1.getPrice()<c2.getPrice())
+      return 1;
+      else 
+      return -1;     
+    }
+    
 }
