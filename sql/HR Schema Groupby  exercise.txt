@@ -1,0 +1,31 @@
+HR Schema – GROUP BY & HAVING Exercises 
+
+Display the total number of employees in each department.
+
+Find the average salary for each job title.
+
+List departments where the average salary is greater than 10,000.
+
+Show the highest and lowest salary in each department.
+
+Find how many employees work under each manager.
+
+Display the total salary paid to employees in each department.
+
+Find departments having more than 3 employees.
+
+Show the number of employees hired in each year.
+
+List jobs where the maximum salary exceeds 15,000.
+
+Find total employees and average salary per department, only for departments located in “Bangalore.”
+
+Show total commission earned by employees in each department (if applicable).
+
+Find departments where minimum salary is less than 5,000.
+
+Display the average salary per department, but only include those with an average above overall company average salary.
+
+List job titles with at least two employees holding that job.
+
+Show the department name and count of employees for each, ordered by count descending.
