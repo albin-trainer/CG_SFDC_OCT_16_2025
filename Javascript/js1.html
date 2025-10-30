@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <script>
+            var msg="Welcome to Javascript World !!!!!";
+            // This is javascript comment
+           // alert(msg);
+            console.log(msg);
+            var a="10"; //here a is string
+            var b=50; // here b is a number
+            var c=  parseInt(a)+b;
+            console.log("Sum is "+c)
+
+            //to create a array
+            var arr1=[]; //empty array
+            var arr2= new Array();
+            var cities=["Bangalore","Mysore","Mumbai"];
+            display(cities);
+            cities.push("Hyderabad"); //add @ last index
+            console.log("---after push-------")
+            display(cities);
+            cities.pop(); //removes the last index
+            console.log("---After pop----");
+            display(cities);
+            cities.shift();//removes the 1st element
+            console.log("---After swift----");
+            display(cities);
+            cities.unshift("BLR") //adds @ 1st index
+            console.log("---After unswift----");
+            display(cities);
+            cities.push("Hyderabad");
+            cities.push("Chennai");
+            cities.push("Pune");
+            console.log("------------------")
+            display(cities);
+         var sliceCopy=      cities.slice(1,3); //reutuns another copy, wont affect the original array
+         console.log("--------slice copy-------")
+            display(sliceCopy);
+            function display(cities){
+                // for(i=0;i<cities.length;i++){
+                //     console.log(cities[i]);
+                // }
+                for(v of cities){
+                    console.log(v)
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <!-- 
+            This is HTML comment
+        -->
+        <h1> Learning Javascript  </h1>
+    </body>
+</html>
