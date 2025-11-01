@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script>
+            //Function constructpr
+                function Employee(id, empName){
+                    this.id=id;
+                    this.empName=empName;
+                }
+
+                var emp1= new Employee(101,"Abhilash");
+                var emp2= new Employee(102,"Kalai");
+                
+              //  console.log(emp1.id +", and name is "+emp1.empName)
+              var emps=[emp1,emp2];
+              for(e of emps){
+                console.log("Emp id is "+e.id +", and name is "+e.empName)
+              }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

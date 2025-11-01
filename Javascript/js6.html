@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <script>
+            function changeText(){
+                document.getElementById("p1").innerHTML="Halloween is Coming !!!!"
+            }
+            function movePara(direction){
+                 var pnode=document.getElementById("p1");
+                 pnode.setAttribute("align",direction);
+            }
+            var directions=["left","center","right"];
+            var i=0;
+            var myinterval;
+            function initTimer(){              
+            myinterval=    setInterval(setTimer,500);               
+            }
+            function setTimer(){
+                if(i==3) i=0;
+                movePara(directions[i]) ; i++;
+            }
+            initTimer();
+        </script>
+        <style>
+            p{
+                color:blue;
+                font-size: 200%;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <p id="p1" align="center">  This is a Paragraph  </p>
+        <button onclick="changeText()" >Click ME</button>
+        <button onclick="movePara('left')">left</button>
+        <button onclick="movePara('center')">center</button>
+        <button onclick="movePara('right')">Right</button>
+        <button onclick="initTimer()">Timer</button>
+    </body>
+</html>

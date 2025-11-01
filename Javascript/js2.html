@@ -1,0 +1,22 @@
+<html>
+    <script>
+
+        function f1(){
+            console.log("----function 1")
+        }
+        function f1(a){
+            console.log("******function 2  " +a);
+        }
+        function f1(a,b,c){
+            console.log(a,b,c);
+            console.log("no of args is "+arguments.length);
+          for(i=0;i<arguments.length;i++)
+            console.log(arguments[i]);
+        }
+        f1(10);
+
+        f1(); //function 2 gets called
+
+        f1(1,2,3,4,5);
+    </script>
+</html>
